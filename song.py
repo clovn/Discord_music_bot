@@ -42,8 +42,3 @@ class Song(object):
             embed.set_thumbnail(url=self.image_url)
             embed.set_footer(text=f'Added by {self.author}', icon_url=self.avatar)
             return embed
-
-        elif type_ == 'queue':
-            pass
-        elif type_ == 'error':
-            pass

@@ -79,20 +79,20 @@ async def on_ready():
     main_loop.start()
 
 
-# @bot.command()
-# async def pause(ctx):
-#     try:
-#         info_list[5].pause()
-#     except Exception as e:
-#         print(e)
+@bot.command()
+async def pause(ctx):
+    try:
+        queue[0].client.pause()
+    except Exception as e:
+        print(e)
 
 
-# @bot.command()
-# async def resume(ctx):
-#     try:
-#         info_list[5].resume()
-#     except Exception as e:
-#         print(e)
+@bot.command()
+async def resume(ctx):
+    try:
+        queue[0].client.resume()
+    except Exception as e:
+        print(e)
 
 
 @bot.command()
@@ -101,7 +101,7 @@ async def ql(ctx):
         if len(queue) > 0:
             embed = discord.Embed(title=f'Play next...', description=None, color=discord.Color.green())
             for i in range(1, len(queue) + 1):
-                embed.add_field(name=f'#{i}', value=f'{queue[i - 1][1]}', inline=False)
+                embed.add_field(name=f'#{i}', value=f'{queue[i - 1].title}', inline=False)
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(title=f':toolbox: Error', description=f'There is nothing In queue',
@@ -130,14 +130,6 @@ async def ql(ctx):
 #             embed = discord.Embed(title=f':toolbox: Error', description=f'There is nothing to skip',
 #                                   color=discord.Color.red())
 #             await ctx.send(embed=embed)
-#     except Exception as e:
-#         print(e)
-
-
-# @bot.command()
-# async def skip():
-#     try:
-#         await info_list[5].skip()
 #     except Exception as e:
 #         print(e)
 
