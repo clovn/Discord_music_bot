@@ -36,7 +36,7 @@ async def play(ctx, *, query):
         print(e, 'string 38')
 
 
-@tasks.loop(seconds=2.0)
+@tasks.loop(seconds=1.0)
 async def main_loop():
     try:
         if not queue[0].playing and len(queue) > 0:
@@ -100,6 +100,17 @@ async def end(ctx):
 async def skip(ctx):
     try:
         queue[0].client.stop()
+    except Exception as e:
+        print(e)
+
+@bot.command()
+async def dele(ctx, arg):
+    try:
+        del queue[int(arg)]
+        embed = discord.Embed(title=f'Succesfully deleted',
+                              color=discord.Color.green())
+        await ctx.send(embed=embed)
+
     except Exception as e:
         print(e)
 
