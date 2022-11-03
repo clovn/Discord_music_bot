@@ -45,7 +45,6 @@ async def main_loop():
                 discord.FFmpegPCMAudio(executable="ffmpeg\\ffmpeg.exe", source=queue[0].track, **FFMPEG_OPTIONS),
                 after=lambda e: queue.remove(queue[0]))
             queue[0].playing = True
-
     except:
         pass
 
