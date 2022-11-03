@@ -7,7 +7,6 @@ YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'False'}
 
 
 class Song(object):
-
     playing = False
 
     def __init__(self, meta, text_channel, voice_channel, client, author, avatar):
